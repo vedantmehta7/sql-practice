@@ -21,3 +21,29 @@
 -- que: find highest and lowest populated city of each state
 -- link: https://www.youtube.com/watch?v=WM2jN1gOs_8&list=PLBTZqjSKn0IfuIqbMIqzS-waofsPHMS0E&index=26
 
+select * from city_population;
+
+-- 1. using join and cte (group by)
+with cte as (
+select state , min(population) as min_population , max(population) as max_population
+from city_population group by state
+) select a.state , b.city as min_population_city , c.city as max_population_city
+from cte a inner join city_population b on a.state=b.state and a.min_population=b.population
+inner join city_population c on a.state=c.state and a.max_population=c.population;
+
+-- 2. using rank
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
